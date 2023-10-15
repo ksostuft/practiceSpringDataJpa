@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>allSelect</title>
+    <style>
+        th {
+            max-width: 120px;
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 <body>
     <h1>전체 조회</h1>
+    <table>
+        <tr>
+            <th>여행지 번호</th>
+            <th>여행지 제목</th>
+            <th>여행지 주소</th>
+            <th>여행지 분류</th>
+            <th>여행지 주변시설</th>
+            <th>여행지 제공용품</th>
+            <th>여행지 정책</th>
+            <th>여행지 유의사항</th>
+        </tr>
+        <tr th:each="tourInfo : ${ tourList }">
+            <th th:text="${ tourInfo.tourCode }"></th>
+            <th th:text="${ tourInfo.tourTitle }"></th>
+            <th th:text="${ tourInfo.addr }"></th>
+            <th th:text="${ tourInfo.tourCategory }"></th>
+            <th th:text="${ tourInfo.facilities }"></th>
+            <th th:text="${ tourInfo.supplies }"></th>
+            <th th:text="${ tourInfo.policy }"></th>
+            <th th:text="${ tourInfo.notice }"></th>
+        </tr>
+    </table>
 </body>
 </html>

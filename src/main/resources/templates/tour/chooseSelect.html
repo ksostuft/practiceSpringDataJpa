@@ -3,8 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>chooseSelect</title>
+    <style>
+        th {
+            max-width: 120px;
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 <body>
     <h1>선택 조회</h1>
+    <input type="number" min="1" max="206" id="no"> 번호를 입력하세요.<br>
+    <button onclick="findById();">찾기</button><br>
+    <table>
+        <tr>
+            <th>여행지 번호</th>
+            <th>여행지 제목</th>
+            <th>여행지 주소</th>
+            <th>여행지 분류</th>
+            <th>여행지 주변시설</th>
+            <th>여행지 제공용품</th>
+            <th>여행지 정책</th>
+            <th>여행지 유의사항</th>
+        </tr>
+        <tr>
+            <th th:text="${ tourInfo.tourCode }"></th>
+            <th th:text="${ tourInfo.tourTitle }"></th>
+            <th th:text="${ tourInfo.addr }"></th>
+            <th th:text="${ tourInfo.tourCategory }"></th>
+            <th th:text="${ tourInfo.facilities }"></th>
+            <th th:text="${ tourInfo.supplies }"></th>
+            <th th:text="${ tourInfo.policy }"></th>
+            <th th:text="${ tourInfo.notice }"></th>
+        </tr>
+    </table>
+    
+    
 </body>
+<script>
+    function findById() {
+        let no = document.getElementById('no').value;
+        if(no > 206) no = 206;
+        if(no < 1) no = 1;
+        location.href = "/tour/chooseSelect?no=" + no;
+    }
+</script>
 </html>
