@@ -1,14 +1,12 @@
 package com.ohgiraffers.practicespringdatajpa.tour.controller;
 
+import com.ohgiraffers.practicespringdatajpa.tour.dto.TourCategorySortDTO;
 import com.ohgiraffers.practicespringdatajpa.tour.dto.TourInfoDTO;
 import com.ohgiraffers.practicespringdatajpa.tour.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -53,6 +51,20 @@ public class TourController {
 
     @GetMapping("/regist")
     public void regist() {}
+
+    @PostMapping("/regist")
+    public String registTourInfo(TourInfoDTO tourInfoDTO) {
+        tourService.registTourInfo(tourInfoDTO);
+        return "redirect:/tour/allSelect";
+    }
+
+    @GetMapping(value = "tourCategorySort", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<TourCategorySortDTO> tourCategorySort() {
+        return tourService.findTourCategorySort();
+    }
+
+
 
     @GetMapping("/modify")
     public void modify() {}
