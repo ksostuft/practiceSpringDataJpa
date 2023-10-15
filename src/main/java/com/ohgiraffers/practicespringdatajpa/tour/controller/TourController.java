@@ -32,10 +32,10 @@ public class TourController {
     public void chooseSelect(@RequestParam("no") String no, Model model) {
         System.out.println(no);
         if(no != null && !"".equals(no)) {
-
             TourInfoDTO tourInfo = tourService.findOne(Integer.parseInt(no));
-            System.out.println(tourInfo);
             model.addAttribute("tourInfo", tourInfo);
+        } else {
+            model.addAttribute("tourInfo");
         }
     }
 

@@ -29,7 +29,6 @@ public class TourService {
 
     public TourInfoDTO findOne(int no) {
         TourInfo tourInfo = tourRepository.findById(no).orElseThrow(IllegalArgumentException::new);
-
         return modelMapper.map(tourInfo, TourInfoDTO.class);
     }
 }
