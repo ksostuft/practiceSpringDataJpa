@@ -1,5 +1,6 @@
 package com.ohgiraffers.practicespringdatajpa.tour.service;
 
+import ch.qos.logback.classic.sift.AppenderFactoryUsingJoran;
 import com.ohgiraffers.practicespringdatajpa.tour.dto.TourCategorySortDTO;
 import com.ohgiraffers.practicespringdatajpa.tour.dto.TourInfoDTO;
 import com.ohgiraffers.practicespringdatajpa.tour.entity.TourCategorySort;
@@ -46,16 +47,31 @@ public class TourService {
         return tourInfoList.stream().map(tourInfo -> modelMapper.map(tourInfo, TourInfoDTO.class)).collect(Collectors.toList());
     }
 
+
     @Transactional
     public void modifyTourInfo(TourInfoDTO tourInfoDTO) {
         TourInfo tourInfo = tourInfoRepository.findById(tourInfoDTO.getTourCode()).orElseThrow(IllegalArgumentException::new);
-        tourInfo.setTourTitle(tourInfoDTO.getTourTitle());
-        tourInfo.setTourCategory(tourInfoDTO.getTourCategory());
-        tourInfo.setAddr(tourInfoDTO.getAddr());
-        tourInfo.setFacilities(tourInfoDTO.getFacilities());
-        tourInfo.setSupplies(tourInfoDTO.getSupplies());
-        tourInfo.setPolicy(tourInfoDTO.getPolicy());
-        tourInfo.setNotice(tourInfoDTO.getNotice());
+        if(!"".equals(tourInfoDTO.getTourTitle()) && !(tourInfoDTO.getTourTitle() == null)) {
+            tourInfo.setTourTitle(tourInfoDTO.getTourTitle());
+        }
+        if(!"".equals(tourInfoDTO.getTourCategory()) && !(tourInfoDTO.getTourCategory() == null)) {
+            tourInfo.setTourCategory(tourInfoDTO.getTourCategory());
+        }
+        if(!"".equals(tourInfoDTO.getAddr()) && !(tourInfoDTO.getAddr() == null)) {
+            tourInfo.setAddr(tourInfoDTO.getAddr());
+        }
+        if(!"".equals(tourInfoDTO.getFacilities()) && !(tourInfoDTO.getFacilities() == null)) {
+            tourInfo.setFacilities(tourInfoDTO.getFacilities());
+        }
+        if(!"".equals(tourInfoDTO.getSupplies()) && !(tourInfoDTO.getSupplies() == null)) {
+            tourInfo.setSupplies(tourInfoDTO.getSupplies());
+        }
+        if(!"".equals(tourInfoDTO.getPolicy()) && !(tourInfoDTO.getPolicy() == null)) {
+            tourInfo.setPolicy(tourInfoDTO.getPolicy());
+        }
+        if(!"".equals(tourInfoDTO.getNotice()) && !(tourInfoDTO.getNotice() == null)) {
+            tourInfo.setNotice(tourInfoDTO.getNotice());
+        }
     }
 
     @Transactional
