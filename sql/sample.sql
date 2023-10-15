@@ -222,3 +222,15 @@ INSERT INTO Tour_Info (TOUR_TITLE, ADDR, TOUR_CATEGORY, FACILITIES, SUPPLIES, PO
 INSERT INTO Tour_Info (TOUR_TITLE, ADDR, TOUR_CATEGORY, FACILITIES, SUPPLIES, POLICY, NOTICE) VALUES ('북서울 꿈의숲', '서울특별시 강북구 월계로 173 ', '관광지', '성북구 운영 반려견 놀이터(우측 산 내부)', '', '모든 견종', '청운답원은 동반 불가<br>목줄 착용 필수<br>배변 처리 필수<br>대형견 및 맹견 입마개 착용');
 INSERT INTO Tour_Info (TOUR_TITLE, ADDR, TOUR_CATEGORY, FACILITIES, SUPPLIES, POLICY, NOTICE) VALUES ('안동 하회마을 [유네스코 세계문화유산]', '경상북도 안동시 풍천면 하회종가길 2-1 ', '관광지', '반려동물 동반 가능 온천탕', '반려견수건, 패드', '반려견 (10kg 소형견)<br>반려묘(사전 확인 필요)', '');
 INSERT INTO Tour_Info (TOUR_TITLE, ADDR, TOUR_CATEGORY) VALUES ('해운대 동백섬', '부산광역시 해운대구 동백로 67 (우동) 일대', '관광지');
+
+
+CREATE TABLE Tour_Category_Sort
+(
+    TOUR_Cate_Code INT auto_increment PRIMARY KEY,
+    Tour_Category_Name VARCHAR(50)
+);
+
+INSERT INTO Tour_Category_Sort (Tour_Category_Name) values ('관광지');
+INSERT INTO Tour_Category_Sort (Tour_Category_Name) values ('식음료');
+INSERT INTO Tour_Category_Sort (Tour_Category_Name) values ('체험');
+INSERT INTO Tour_Category_Sort (Tour_Category_Name) values ('숙박');

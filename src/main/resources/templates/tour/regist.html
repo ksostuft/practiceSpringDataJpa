@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>regist</title>
+    <script>
+        fetch('/tour/tourCategorySort')
+            .then(res => res.json())
+            .then(data => {
+                const sortList = document.getElementById("tourCategoryCode");
+
+                for(sort of data) {
+                    let sortOption = document.createElement('option');
+                    sortOption.value = sort.tourCategoryCode;
+                    sortOption.textContent = sort.tourCategoryName;
+
+                    sortList.appendChild(sortOption);
+                }
+            });
+    </script>
 </head>
 <body>
     <h1>등록</h1>
+    <select id="tourCategoryCode", name="tourCategoryCode"></select>
 </body>
 </html>

@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>delete</title>
+    <script>
+        function tourDelete() {
+            let no = document.getElementById('no').value;
+            if(no > 206) no = 206;
+            if(no < 1) no = 1;
+            location.href = "/tour/delete?no=" + no;
+        }
+    </script>
 </head>
 <body>
     <h1>삭제</h1>
+    <input type="number" min="1" max="206" id="no"> 1~206까지의 번호를 입력하세요.<br>
+    <button onclick="tourDelete();">삭제</button><br>
 </body>
 </html>

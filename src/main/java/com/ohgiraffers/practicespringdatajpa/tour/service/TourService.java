@@ -31,4 +31,11 @@ public class TourService {
         TourInfo tourInfo = tourRepository.findById(no).orElseThrow(IllegalArgumentException::new);
         return modelMapper.map(tourInfo, TourInfoDTO.class);
     }
+
+    public List<TourInfoDTO> searchByTitle(String tourTitle) {
+        List<TourInfo> tourInfoList = tourRepository.findByTourTitleContaining(tourTitle);
+        System.out.println(tourInfoList);
+
+        return tourInfoList.stream().map(tourInfo -> modelMapper.map(tourInfo, TourInfoDTO.class)).collect(Collectors.toList());
+    }
 }

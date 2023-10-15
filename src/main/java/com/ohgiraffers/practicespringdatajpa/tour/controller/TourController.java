@@ -42,6 +42,14 @@ public class TourController {
     @GetMapping("/conditionSelect")
     public void conditionSelect() {}
 
+    @GetMapping("/searchByTitle")
+    public void searchByTitle(@RequestParam("tourTitle") String tourTitle, Model model) {
+        List<TourInfoDTO> tourInfoDTOList = tourService.searchByTitle(tourTitle);
+
+        model.addAttribute("tourList", tourInfoDTOList);
+        model.addAttribute("tourTitle", tourTitle);
+    }
+
     @GetMapping("/regist")
     public void regist() {}
 

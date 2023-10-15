@@ -15,7 +15,7 @@
     <input type="number" min="1" max="206" id="no"> 1~206까지의 번호를 입력하세요.<br>
     <button onclick="findById();">찾기</button><br>
     <table>
-        <tr>
+        <tr th:if="${ tourInfo != null }">
             <th>여행지 번호</th>
             <th>여행지 제목</th>
             <th>여행지 주소</th>
