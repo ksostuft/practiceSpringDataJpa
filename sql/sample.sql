@@ -4,6 +4,8 @@ GRANT ALL privileges ON tourBase.* TO ohgiraffers@'%';
 
 use tourBase;
 
+drop table if exists tour_info;
+
 CREATE TABLE Tour_Info
 (
     TOUR_CODE INT auto_increment PRIMARY KEY,
