@@ -13,7 +13,7 @@
 <body>
     <h1>선택 조회</h1>
     <input type="number" min="1" max="206" id="no"> 1~206까지의 번호를 입력하세요.<br>
-    <button onclick="findById();">찾기</button><br>
+    <button onclick="findById();">찾기</button> <button onclick="location.href='/main'">홈으로</button><br>
     <table>
         <tr th:if="${ tourInfo != null }">
             <th>여행지 번호</th>
