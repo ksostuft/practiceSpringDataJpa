@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,6 +41,16 @@ public class TourService {
         return tourInfoList.stream().map(tourInfo -> modelMapper.map(tourInfo, TourInfoDTO.class)).collect(Collectors.toList());
     }
 
+    @Transactional
+    public void modifyTourInfo(TourInfoDTO tourInfoDTO) {
+        TourInfo tourInfo = tourRepository.findById(tourInfoDTO.getTourCode()).orElseThrow(IllegalArgumentException::new);
+        tourInfo.setTourTitle(tourInfoDTO.getTourTitle());
+        tourInfo.setFacilities(tourInfoDTO.getFacilities());
+        tourInfo.setPolicy(tourInfoDTO.getPolicy());
+        tourInfo.setNotice(tourInfoDTO.getNotice());
+    }
+
+    @Transactional
     public void deleteTourInfo(String no) {
         try {
             tourRepository.deleteById(Integer.parseInt(no));

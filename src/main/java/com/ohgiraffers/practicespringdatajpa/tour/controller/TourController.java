@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -55,6 +56,12 @@ public class TourController {
 
     @GetMapping("/modify")
     public void modify() {}
+
+    @PostMapping("/modify")
+    public String modifyTourInfo(TourInfoDTO tourInfoDTO) {
+        tourService.modifyTourInfo(tourInfoDTO);
+        return "redirect:/tour/allSelect";
+    }
 
     @GetMapping("/delete")
     public String delete(@RequestParam("no") String no) {
