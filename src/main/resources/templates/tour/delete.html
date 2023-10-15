@@ -6,18 +6,19 @@
     <script>
         function tourDelete() {
             let no = document.getElementById('no').value;
-            if(no < 1 || no > 206) {
+            location.href = "/tour/delete?no=" + no;
+            /*if(no < 1 || no > 1000) {
                 alert("올바른 숫자를 입력해주세요");
                 document.getElementById('no').value = "";
             } else {
                 location.href = "/tour/delete?no=" + no;
-            }
+            }*/
         }
     </script>
 </head>
 <body>
     <h1>삭제</h1>
-    <input type="number" min="1" max="206" id="no"> 1~206까지의 번호를 입력하세요.<br>
+    <input type="number" id="no"> 번호를 입력하세요.<br>
     <button onclick="tourDelete();">삭제</button> <button onclick="location.href='/main'">홈으로</button>
 </body>
 </html>

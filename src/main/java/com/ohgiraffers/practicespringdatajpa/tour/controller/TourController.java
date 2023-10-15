@@ -78,7 +78,7 @@ public class TourController {
     @GetMapping("/delete")
     public String delete(@RequestParam("no") String no) {
         if (no != null && !"".equals(no)) {
-            if(Integer.parseInt(no) > 206 || Integer.parseInt(no) < 0 ) {
+            if(Integer.parseInt(no) > 1000 || Integer.parseInt(no) < 0 ) {
                 return "tour/delete";
             }
             tourService.deleteTourInfo(no);
