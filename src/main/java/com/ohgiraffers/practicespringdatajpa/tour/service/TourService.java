@@ -50,7 +50,10 @@ public class TourService {
     public void modifyTourInfo(TourInfoDTO tourInfoDTO) {
         TourInfo tourInfo = tourInfoRepository.findById(tourInfoDTO.getTourCode()).orElseThrow(IllegalArgumentException::new);
         tourInfo.setTourTitle(tourInfoDTO.getTourTitle());
+        tourInfo.setTourCategory(tourInfoDTO.getTourCategory());
+        tourInfo.setAddr(tourInfoDTO.getAddr());
         tourInfo.setFacilities(tourInfoDTO.getFacilities());
+        tourInfo.setSupplies(tourInfoDTO.getSupplies());
         tourInfo.setPolicy(tourInfoDTO.getPolicy());
         tourInfo.setNotice(tourInfoDTO.getNotice());
     }

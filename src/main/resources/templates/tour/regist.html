@@ -20,19 +20,23 @@
     </script>
 </head>
 <body>
-    <h1>수정</h1> <button onclick="location.href='/main'">홈으로</button><br>
+    <h1>등록</h1> <button onclick="location.href='/main'">홈으로</button><br>
     <form action="/tour/regist" method="post">
-        <label>등록할 관광지 제목 :
+        <label>등록할 여행지 제목 :
             <input type="text" name="tourTitle" required></label><br>
-        <label>등록할 관광지 분류 :
+        <label>등록할 여행지 주소 :
+            <input type="text" name="addr" required></label><br>
+        <label>등록할 여행지 분류 :
             <select id="tourCategoryCode" name="tourCategory"></select></label><br>
-        <label>등록할 주변 시설 :
+        <label>등록할 주변시설 :
             <input type="text" name="facilities"></label><br>
+        <label>등록할 여행지 제공용품 :
+            <input type="text" name="supplies"></label><br>
         <label>등록할 정책 :
             <input type="text" name="policy"></label><br>
         <label>등록할 유의사항 :
             <input type="text" name="notice"></label><br>
-        <input type="submit" value="관광지 내용 등록하기">
+        <input type="submit" value="여행지 내용 등록하기">
     </form>
     
 </body>

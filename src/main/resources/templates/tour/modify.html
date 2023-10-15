@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <title>modify</title>
     <script>
+        fetch('/tour/tourCategorySort')
+            .then(res => res.json())
+            .then(data => {
+                const sortList = document.getElementById("tourCategoryCode");
+
+                for(sort of data) {
+                    let sortOption = document.createElement('option');
+                    sortOption.value = sort.tourCategoryName;
+                    sortOption.textContent = sort.tourCategoryName;
+
+                    sortList.appendChild(sortOption);
+                }
+            });
+    </script>
+    <script>
         function tourNumCheck() {
             let no = document.getElementById('no').value;
             if(no < 1 || no > 206) {
@@ -19,17 +34,23 @@
 <body>
     <h1>수정</h1> <button onclick="location.href='/main'">홈으로</button><br>
     <form action="/tour/modify" onsubmit="return tourNumCheck();" method="post">
-        <label>수정할 관광지 번호 :
-        <input type="number" id="no" name="tourCode"></label><br>
-        <label>수정할 관광지 제목 :
-        <input type="text" name="tourTitle"></label><br>
+        <label>수정할 여행지 번호 :
+            <input type="number" id="no" name="tourCode"></label><br>
+        <label>수정할 여행지 제목 :
+            <input type="text" name="tourTitle"></label><br>
+        <label>수정할 여행지 주소 :
+            <input type="text" name="addr" required></label><br>
+        <label>수정할 여행지 분류 :
+            <select id="tourCategoryCode" name="tourCategory"></select></label><br>
         <label>수정할 주변 시설 :
-        <input type="text" name="facilities"></label><br>
+            <input type="text" name="facilities"></label><br>
+        <label>수정할 여행지 제공용품 :
+            <input type="text" name="supplies"></label><br>
         <label>수정할 정책 :
-        <input type="text" name="policy"></label><br>
+            <input type="text" name="policy"></label><br>
         <label>수정할 유의사항 :
-        <input type="text" name="notice"></label><br>
-        <input type="submit" value="관광지 내용 수정하기">
+            <input type="text" name="notice"></label><br>
+        <input type="submit" value="여행지 내용 수정하기">
     </form>
 </body>
 </html>
