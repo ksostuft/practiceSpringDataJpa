@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>searchByTitle</title>
+    <style>
+        th {
+            max-width: 120px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<h1>조건 조회(쿼리 메소드)</h1>
+<h3>제목으로 관광지 조회</h3> 검색어: <span th:text="${ tourTitle }"></span>
+<br>
+    <table>
+        <tr th:if="${ tourInfo != null }">
+            <th>여행지 번호</th>
+            <th>여행지 제목</th>
+            <th>여행지 주소</th>
+            <th>여행지 분류</th>
+            <th>여행지 주변시설</th>
+            <th>여행지 제공용품</th>
+            <th>여행지 정책</th>
+            <th>여행지 유의사항</th>
+        </tr>
+        <th:block th:if="${ tourList.size() == 0 }">
+            <h3>검색 결과가 없습니다.</h3>
+        </th:block>
+        <tr th:each="tourInfo : ${ tourList }" th:if="${ tourInfo != null }">
+            <th th:text="${ tourInfo.tourCode }"></th>
+            <th th:text="${ tourInfo.tourTitle }"></th>
+            <th th:text="${ tourInfo.addr }"></th>
+            <th th:text="${ tourInfo.tourCategory }"></th>
+            <th th:text="${ tourInfo.facilities }"></th>
+            <th th:text="${ tourInfo.supplies }"></th>
+            <th th:text="${ tourInfo.policy }"></th>
+            <th th:text="${ tourInfo.notice }"></th>
+        </tr>
+    </table>
+</body>
+</html>

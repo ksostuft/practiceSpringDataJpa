@@ -5,6 +5,7 @@ import com.ohgiraffers.practicespringdatajpa.tour.entity.TourInfo;
 import com.ohgiraffers.practicespringdatajpa.tour.repository.TourRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,5 +38,14 @@ public class TourService {
         System.out.println(tourInfoList);
 
         return tourInfoList.stream().map(tourInfo -> modelMapper.map(tourInfo, TourInfoDTO.class)).collect(Collectors.toList());
+    }
+
+    public void deleteTourInfo(String no) {
+        try {
+            tourRepository.deleteById(Integer.parseInt(no));
+        } catch (EmptyResultDataAccessException e) {
+            return;
+        }
+
     }
 }

@@ -57,7 +57,11 @@ public class TourController {
     public void modify() {}
 
     @GetMapping("/delete")
-    public void delete() {}
-
-
+    public String delete(@RequestParam("no") String no) {
+        if (no != null && !"".equals(no)) {
+            tourService.deleteTourInfo(no);
+            return "redirect:/tour/allSelect";
+        }
+        return "tour/delete";
+    }
 }
