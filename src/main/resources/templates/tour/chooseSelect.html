@@ -43,9 +43,12 @@
 <script>
     function findById() {
         let no = document.getElementById('no').value;
-        if(no > 206) no = 206;
-        if(no < 1) no = 1;
-        location.href = "/tour/chooseSelect?no=" + no;
+        if(no < 1 || no > 206) {
+            alert("올바른 숫자를 입력해주세요");
+            document.getElementById('no').value = "";
+        } else {
+            location.href = "/tour/chooseSelect?no=" + no;
+        }
     }
 </script>
 </html>

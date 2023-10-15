@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.UnexpectedRollbackException;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -52,11 +53,6 @@ public class TourService {
 
     @Transactional
     public void deleteTourInfo(String no) {
-        try {
-            tourRepository.deleteById(Integer.parseInt(no));
-        } catch (EmptyResultDataAccessException e) {
-            return;
-        }
-
+        tourRepository.deleteById(Integer.parseInt(no));
     }
 }
